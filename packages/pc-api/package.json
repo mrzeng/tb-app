@@ -1,6 +1,6 @@
 {
   "name": "@tb-app/pc-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "重新定义淘宝小程序PC端API的使用方式",
   "keywords": [
     "taobao",
