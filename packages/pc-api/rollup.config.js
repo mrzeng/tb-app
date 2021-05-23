@@ -9,7 +9,7 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      file: `${target}/index.js`,
+      file: 'lib/index.js',
       format: 'es',
     },
     plugins: [
@@ -17,9 +17,9 @@ export default [
         extensions: ['.ts', '.js'],
       }),
       commonjs(),
-      typescript({ useTsconfigDeclarationDir: true }),
+      typescript({ useTsconfigDeclarationDir: true, tsconfig: './tsconfig.prod.json' }),
       cleaner({
-        targets: [`${target}/`],
+        targets: ['lib/', 'types/'],
       }),
     ],
   },
