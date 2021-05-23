@@ -4,6 +4,10 @@ module.exports = {
   globals: {
     my: true,
   },
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: './tsconfig.json',
+  },
   rules: {
     'import/no-absolute-path': ['off', 'never'],
     'import/extensions': ['off', 'never'],
