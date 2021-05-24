@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/noshower/tb-app/compare/@tb-app/pub-sub@0.1.0...@tb-app/pub-sub@0.2.0) (2021-05-24)
+
+### Features
+
+- **pub-sub:** publish 方法第一个参数支持 token,subscribeOnce 支持返回 token ([bcf3439](https://github.com/noshower/tb-app/commit/bcf34395c0170a610a088a8a44949afe4de35fab))
+
 # 0.1.0 (2021-05-23)
 
 ### Features
