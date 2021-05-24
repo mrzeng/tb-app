@@ -1,6 +1,6 @@
 {
   "name": "@tb-app/pub-sub",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "提供发布订阅模式的库",
   "keywords": [
     "publish",
@@ -11,6 +11,7 @@
   "homepage": "https://github.com/noshower/tb-app/tree/main/packages/pub-sub#readme",
   "license": "MIT",
   "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "test"

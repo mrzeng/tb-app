@@ -28,6 +28,19 @@ describe('测试 unsubscribe 函数', () => {
     expect(fn2).not.toBeCalled();
   });
 
+  test('参数是消息名称，取消订阅成功，应该不能影响其他订阅的消息', () => {
+    const name1 = 'say1';
+    const name2 = 'say2';
+    const data = 'message';
+    const fn1 = jest.fn();
+    const fn2 = jest.fn();
+    subscribe(name1, fn1);
+    subscribe(name2, fn2);
+    unsubscribe(name1);
+    publish(name2, data);
+    expect(fn2).toBeCalled();
+  });
+
   test('参数是消息名称，取消订阅失败，应该返回 false', () => {
     const name = 'say';
     subscribe(name, () => {});

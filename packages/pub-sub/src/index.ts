@@ -40,14 +40,27 @@ function subscribe(name: string, callback: Callback): string {
 }
 
 /**
- * 发布。根据 name 触发响应的注册回调
+ * 发布。根据 name/token 触发响应的注册回调
  * @param name
  * @param data
  * @returns
  */
 function publish(name: string, data?: any): boolean {
-  assertName(name);
+  if (typeof name !== 'string') {
+    warning(`Expected the name to be a string ,Instead, received:'${typeof name}'`);
+  }
   let result = false;
+  if (isToken(name)) {
+    const token = name;
+    const names = Object.keys(callbacks);
+    for (let i = 0; i < names.length; i += 1) {
+      const map = callbacks[names[i]];
+      if (hasOwnProperty(map, token)) {
+        map[token](names[i], data);
+        return true;
+      }
+    }
+  }
   if (hasOwnProperty(callbacks, name)) {
     Object.values(callbacks[name]).forEach((callback) => {
       result = true;
@@ -141,15 +154,16 @@ function subscribeOnlyOne(name: string, callback: Callback) {
 }
 
 /**
- * 订阅消息，但是回调只会触发一次
+ * 订阅消息，但是回调只会触发一次。返回结果为token
  * @param name
  * @param callback
  */
-function subscribeOnce(name: string, callback: Callback): void {
+function subscribeOnce(name: string, callback: Callback): string {
   const token = subscribe(name, function wrapCallback(n, data) {
     unsubscribe(token);
     callback(n, data);
   });
+  return token;
 }
 
 export { subscribe, publish, clearSubscriptions, unsubscribe, clearAllSubscriptions, getSubscriptions, subscribeOnlyOne, subscribeOnce };

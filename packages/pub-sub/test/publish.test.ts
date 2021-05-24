@@ -51,4 +51,24 @@ describe('测试 publish 函数', () => {
     publish(name, data);
     expect(fn).toBeCalledWith(name, data);
   });
+
+  test('当第一个参数是token, 并且存在对应的callback, 执行之后应该返回true', () => {
+    const token = subscribe('say', () => {});
+    expect(publish(token)).toBe(true);
+  });
+
+  test('当第一个参数是token, 并且不存在对应的callback, 执行之后应该返回false', () => {
+    const token = subscribe('say', () => {});
+    unsubscribe(token);
+    expect(publish(token)).toBe(false);
+  });
+
+  test('当第一个参数是token, 并且存在对应的callback, 订阅的 name 和 数据 应该作为回调的参数', () => {
+    const fn = jest.fn();
+    const name = 'say';
+    const data = 'message';
+    const token = subscribe(name, fn);
+    publish(token, data);
+    expect(fn).toBeCalledWith(name, data);
+  });
 });
