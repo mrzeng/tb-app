@@ -8,7 +8,7 @@ export default [
       file: 'lib/index.js',
       format: 'es',
     },
-    external: ['@tb-app/pub-sub', '@tb-app/pub-sub'],
+    external: ['@tb-app/pub-sub', '@tb-app/pc-api'],
     plugins: [
       typescript({ useTsconfigDeclarationDir: true, tsconfig: './tsconfig.prod.json' }),
       cleaner({

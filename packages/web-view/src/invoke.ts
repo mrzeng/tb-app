@@ -15,7 +15,7 @@ if (typeof my !== 'undefined') {
  * @param options
  * @returns
  */
-function invoke<T = any>(options: { type: string; data?: T }) {
+function invoke<T = any>(options: { type: string; data?: any }): Promise<T> {
   return new Promise((resolve, reject) => {
     const token = subscribeOnce(options.type, ({ success, data, error }: Data) => {
       if (success) {

@@ -2,7 +2,7 @@
 
 ## 简介
 
-这是一个用于淘宝小程序与 web-view 通信的库。
+这是一个用于淘宝小程序与 web-view 通信的库, 同时还提供了 web-view 调用小程序 api 的简易方式。
 
 ## 安装
 
@@ -17,6 +17,7 @@ npm i @tb-app/web-view
 - 支持 TypeScript
 - 支持 ES 模块
 - 支持 小程序与 web-view 之间的并发通信
+- 支持一键注册所有小程序 API
 
 ## API 介绍
 
@@ -66,13 +67,31 @@ invoke({
 
 #### autoRegistry()
 
-autoRegistry API 只能在**小程序端**使用，用于一次性注册所有小程序 API 供 webview 端使用（事件监听类 API 除外）。 webview 端可以使用与 my 下同名的 api
+autoRegistry API 只能在**小程序端**使用，用于一次性注册所有小程序 API 供 webview 端使用（不包含事件监听和获取上下文之类 API）。 webview 端可以使用与 my 下同名的 api
 
 ```js
-// 小程序端 app.js
+// 小程序端
+// app.js
 import { autoRegistry } from '@tb-app/web-view';
 
 autoRegistry();
+```
+
+```js
+// 小程序端
+import { trigger } from '@tb-app/web-view';
+
+const localWebViewId = 'local';
+
+Page({
+  localWebView: null,
+  data: {
+    localWebViewId,
+  },
+  onWebViewMessage({ detail: { value } }) {
+    trigger(value, localWebViewId);
+  },
+});
 ```
 
 ```js
@@ -125,3 +144,13 @@ removeListen API 只能在 **web-view 端** 使用，用于取消监听。
 - **type**: 要取消监听的事件名称
 
 ---
+
+#### 其他与 my 下面同名的 api
+
+这些 API 只能在 **web-view** 端使用，并且使用时，小程序端必须配合才能使用（需要使用 autoRegistry 和 trigger）。
+
+```js
+// web-view 端
+import { chooseImage, compressImage, saveImage, 等等 } from '@tb-app/web-view';
+// 这些API 与 my.xxx api 入参基本一致，只不过不需要再传了 success 、fail、complete
+```

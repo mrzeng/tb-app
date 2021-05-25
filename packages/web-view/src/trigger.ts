@@ -1,6 +1,7 @@
 import { subscribe, publish } from '@tb-app/pub-sub';
 import * as api from '@tb-app/pc-api';
 import { Message, Result } from './type';
+import prefix from './utils/prefix';
 
 type Callback = (data: any) => void;
 
@@ -53,7 +54,7 @@ const registry = (type: string, callback: Callback) => {
 };
 
 /**
- * 自动注册所有小程序api(事件监听类API除外)
+ * 自动注册所有小程序api(不包含事件监听和获取上下文之类API)
  */
 function autoRegistry() {
   Object.keys(api).forEach((key) => {
