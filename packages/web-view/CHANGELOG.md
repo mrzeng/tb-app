@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/noshower/tb-app/compare/@tb-app/web-view@0.1.0...@tb-app/web-view@0.2.0) (2021-05-25)
+
+### Features
+
+- **web-view:** 强化类型,兼容 1.0.0 pubsub ([0abdb32](https://github.com/noshower/tb-app/commit/0abdb323a975c88fdc08fefc806341726d26d164))
+
 # 0.1.0 (2021-05-24)
 
 ### Features

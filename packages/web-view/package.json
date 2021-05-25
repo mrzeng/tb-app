@@ -1,6 +1,6 @@
 {
   "name": "@tb-app/web-view",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "实现webview与淘宝小程序之间的通信",
   "keywords": [
     "taobao",
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.14.0",
-    "@tb-app/pub-sub": "^0.2.0"
+    "@tb-app/pub-sub": "^0.3.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.2",
