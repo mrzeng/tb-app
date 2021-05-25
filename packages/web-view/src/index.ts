@@ -1,2 +1,2 @@
 export { invoke, listen, removeListen } from './invoke';
-export { registry, trigger } from './trigger';
+export { registry, trigger, autoRegistry } from './trigger';

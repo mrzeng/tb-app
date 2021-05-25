@@ -29,7 +29,58 @@ registry API 只能在**小程序端**使用，用于在小程序端注册事件
 - **type**: 事件的名称
 - **callback**: 当事件触发时的回调函数
 
+```js
+// 小程序端
+import { registry, trigger } from '@tb-app/web-view';
+
+const localWebViewId = 'local';
+
+registry('getStorage', (options) => {
+  my.getStorage(options);
+});
+
+Page({
+  localWebView: null,
+  data: {
+    localWebViewId,
+  },
+  onWebViewMessage({ detail: { value } }) {
+    trigger(value, localWebViewId);
+  },
+});
+```
+
+```js
+// webview 端
+import { invoke } from '@tb-app/web-view';
+
+invoke({
+  type: 'getStorage',
+  data: {
+    key: 'name',
+  },
+});
+```
+
 ---
+
+#### autoRegistry()
+
+autoRegistry API 只能在**小程序端**使用，用于一次性注册所有小程序 API 供 webview 端使用（事件监听类 API 除外）。 webview 端可以使用与 my 下同名的 api
+
+```js
+// 小程序端 app.js
+import { autoRegistry } from '@tb-app/web-view';
+
+autoRegistry();
+```
+
+```js
+// webview 端
+import { getStorage } from '@tb-app/web-view';
+
+getStorage({ key: 'name' });
+```
 
 #### trigger(param:Object,webViewId:string)
 

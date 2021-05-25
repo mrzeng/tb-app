@@ -1,4 +1,5 @@
 import { subscribe, publish } from '@tb-app/pub-sub';
+import * as api from '@tb-app/pc-api';
 import { Message, Result } from './type';
 
 type Callback = (data: any) => void;
@@ -52,6 +53,19 @@ const registry = (type: string, callback: Callback) => {
 };
 
 /**
+ * 自动注册所有小程序api(事件监听类API除外)
+ */
+function autoRegistry() {
+  Object.keys(api).forEach((key) => {
+    // 只注册不带on前缀的api
+    if (key.indexOf('on') !== 0) {
+      // @ts-ignore
+      registry(`${prefix}${key}`, api[key]);
+    }
+  });
+}
+
+/**
  * 触发注册的消息, 只能在小程序端的web-view组件的 onMessage 处理函数上使用
  * @param param 传给消息回调的数据
  * @param webViewId web-view的id
@@ -65,4 +79,4 @@ const trigger = (param: Message, webViewId: string) => {
   });
 };
 
-export { registry, trigger };
+export { registry, trigger, autoRegistry };
