@@ -8,7 +8,7 @@
     "unsubscribe"
   ],
   "author": "noshower",
-  "homepage": "https://github.com/noshower/tb-app/tree/main/packages/pub-sub#readme",
+  "homepage": "https://github.com/noshower/tb-app/tree/main/packages/pub-sub",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
@@ -38,9 +38,6 @@
   "devDependencies": {
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-typescript": "^7.13.0",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^19.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
     "@tongtian/jest-config-preset": "^2.0.0",
     "@types/jest": "^26.0.23",
     "commitizen": "^4.2.4",
