@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/noshower/tb-app/compare/@tb-app/web-view@0.4.0...@tb-app/web-view@0.5.0) (2021-05-25)
+
+### Features
+
+- **web-view:** 新增 web-view 端直接可以使用小程序 api 的方法 ([fb26e6b](https://github.com/noshower/tb-app/commit/fb26e6bd23403fd9d939e9b0b56cad8ff276f846))
+
 # [0.4.0](https://github.com/noshower/tb-app/compare/@tb-app/web-view@0.3.1...@tb-app/web-view@0.4.0) (2021-05-25)
 
 ### Features
