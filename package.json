@@ -6,7 +6,7 @@
     "lerna-version": "lerna version --conventional-commits --include-merged-tags",
     "publish": "lerna run build && lerna publish from-git",
     "prepare": "husky install",
-    "pre-commit": "lint-staged && lerna run test"
+    "pre-commit": "lint-staged"
   },
   "config": {
     "commitizen": {
