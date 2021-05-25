@@ -40,7 +40,6 @@
     "url": "https://github.com/noshower/tb-app/issues"
   },
   "dependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.14.0",
     "@tb-app/pub-sub": "^0.3.0"
   },
   "devDependencies": {
