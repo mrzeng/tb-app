@@ -2,7 +2,7 @@ import warning from './utils/warning';
 import { generateToken, isToken } from './utils/token';
 import hasOwnProperty from './utils/hasOwnProperty';
 
-type Callback = (name: string, data: any) => any;
+type Callback = (data: any) => any;
 
 let callbacks: Record<string, Record<string, Callback>> = {};
 
@@ -43,9 +43,9 @@ function subscribe(name: string, callback: Callback): string {
  * 发布。根据 name/token 触发响应的注册回调
  * @param name
  * @param data
- * @returns
+ * @return
  */
-function publish(name: string, data?: any): boolean {
+function publish<T = any>(name: string, data?: T): boolean {
   if (typeof name !== 'string') {
     warning(`Expected the name to be a string ,Instead, received:'${typeof name}'`);
   }
@@ -56,7 +56,7 @@ function publish(name: string, data?: any): boolean {
     for (let i = 0; i < names.length; i += 1) {
       const map = callbacks[names[i]];
       if (hasOwnProperty(map, token)) {
-        map[token](names[i], data);
+        map[token](data);
         return true;
       }
     }
@@ -64,7 +64,7 @@ function publish(name: string, data?: any): boolean {
   if (hasOwnProperty(callbacks, name)) {
     Object.values(callbacks[name]).forEach((callback) => {
       result = true;
-      callback(name, data);
+      callback(data);
     });
   }
   return result;
@@ -159,9 +159,9 @@ function subscribeOnlyOne(name: string, callback: Callback) {
  * @param callback
  */
 function subscribeOnce(name: string, callback: Callback): string {
-  const token = subscribe(name, function wrapCallback(n, data) {
+  const token = subscribe(name, function wrapCallback(data) {
     unsubscribe(token);
-    callback(n, data);
+    callback(data);
   });
   return token;
 }

@@ -49,7 +49,7 @@ describe('测试 publish 函数', () => {
     const data = 'message';
     subscribe(name, fn);
     publish(name, data);
-    expect(fn).toBeCalledWith(name, data);
+    expect(fn).toBeCalledWith(data);
   });
 
   test('当第一个参数是token, 并且存在对应的callback, 执行之后应该返回true', () => {
@@ -69,6 +69,6 @@ describe('测试 publish 函数', () => {
     const data = 'message';
     const token = subscribe(name, fn);
     publish(token, data);
-    expect(fn).toBeCalledWith(name, data);
+    expect(fn).toBeCalledWith(data);
   });
 });
