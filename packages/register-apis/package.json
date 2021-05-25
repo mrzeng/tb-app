@@ -1,6 +1,6 @@
 {
   "name": "@tb-app/register-apis",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "在PC端小程序中注册所有小程序API(事件监听类api除外)",
   "keywords": [
     "tb",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@tb-app/pc-api": "^0.2.0",
-    "@tb-app/web-view": "^0.3.1"
+    "@tb-app/web-view": "^0.4.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.2",

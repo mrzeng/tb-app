@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/noshower/tb-app/compare/@tb-app/web-view@0.3.1...@tb-app/web-view@0.4.0) (2021-05-25)
+
+### Features
+
+- **web-view:** 新增自动注册所有 API 的方法 autoRegistry ([27f0e6e](https://github.com/noshower/tb-app/commit/27f0e6ed8a5a1f88308fee396ee60597e90ea76a))
+
 ## [0.3.1](https://github.com/noshower/tb-app/compare/@tb-app/web-view@0.3.0...@tb-app/web-view@0.3.1) (2021-05-25)
 
 **Note:** Version bump only for package @tb-app/web-view
