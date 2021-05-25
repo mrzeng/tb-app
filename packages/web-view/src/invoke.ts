@@ -1,18 +1,12 @@
 import { subscribe, publish, unsubscribe, subscribeOnce } from '@tb-app/pub-sub';
+import { Message, Result } from './type';
 
-interface EventResult<T = any> {
-  data: T;
-  success: boolean;
-  error?: string;
-  token: string;
-}
+type Data = Pick<Result, 'data' | 'success' | 'error'>;
 
-if (typeof my === 'undefined') {
-  throw new Error('@tb-app/invoke only use in mini app, maybe you forget to add "https://appx/web-view.min.js"');
-} else {
-  my.onMessage = function onMessage(result: EventResult) {
-    const { token, ...data } = result;
-    publish(token, data);
+if (typeof my !== 'undefined') {
+  my.onMessage = function onMessage(result: Result) {
+    const { token, type, ...data } = result;
+    publish<Data>(token || type, data);
   };
 }
 
@@ -21,11 +15,11 @@ if (typeof my === 'undefined') {
  * @param options
  * @returns
  */
-function invoke(options: { type: string; data?: any }) {
+function invoke<T = any>(options: { type: string; data?: T }) {
   return new Promise((resolve, reject) => {
-    const token = subscribeOnce(options.type, (name, { success, data, error }: EventResult) => {
+    const token = subscribeOnce(options.type, ({ success, data, error }: Data) => {
       if (success) {
-        resolve({ type: name, data });
+        resolve(data);
       } else {
         try {
           reject(JSON.parse(error!));
@@ -34,11 +28,12 @@ function invoke(options: { type: string; data?: any }) {
         }
       }
     });
-    my.postMessage({
+    const message: Message = {
       type: options.type,
       data: options.data,
       token,
-    });
+    };
+    my.postMessage(message);
   });
 }
 
@@ -47,7 +42,7 @@ function invoke(options: { type: string; data?: any }) {
  * @param type
  * @param callback
  */
-function listen(type: string, callback: (type: string, data: any) => void) {
+function listen(type: string, callback: (data?: any) => void) {
   subscribe(type, callback);
 }
 

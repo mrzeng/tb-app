@@ -1,8 +1,9 @@
-import { subscribe, publish, unsubscribe } from '@tb-app/pub-sub';
+import { subscribe, publish } from '@tb-app/pub-sub';
+import { Message, Result } from './type';
 
 type Callback = (data: any) => void;
 
-type Value = {
+type Data = {
   data: any;
   webViewId: string;
   token: string;
@@ -10,37 +11,16 @@ type Value = {
 
 const webViewContextCache: Record<string, any> = {};
 
-const postMessage = (param: { result: any; webViewId: string; token: string }) => {
-  const { webViewId, result, token } = param;
-  if (webViewId) {
-    let webViewContext = webViewContextCache[webViewId];
+const postMessage = (result: Result, webViewId: string) => {
+  let webViewContext = webViewContextCache[webViewId];
+  if (!webViewContext) {
+    webViewContext = my.createWebViewContext(webViewId);
     if (!webViewContext) {
-      webViewContext = my.createWebViewContext(webViewId);
-      webViewContextCache[webViewId] = webViewContext;
+      throw new Error(`id 为 ${webViewId} 的webview组件不存在`);
     }
-    webViewContext.postMessage(
-      webViewContext
-        ? result
-        : {
-            error: `id 为 ${webViewId} 的webview组件不存在`,
-            success: false,
-            token,
-          }
-    );
+    webViewContextCache[webViewId] = webViewContext;
   }
-};
-
-const handleError = (type: string, e: Error) => {
-  if (!e) {
-    return {
-      error: `${type} 调用出错`,
-      success: false,
-    };
-  }
-  return {
-    error: e.message || e.toString(),
-    success: false,
-  };
+  webViewContext.postMessage(result);
 };
 
 /**
@@ -50,18 +30,24 @@ const handleError = (type: string, e: Error) => {
  * @returns
  */
 const registry = (type: string, callback: Callback) => {
-  subscribe(type, (name: string, result: Value) => {
-    const { data, webViewId, token } = result;
+  subscribe(type, (data: Data) => {
+    const { token, webViewId } = data;
     Promise.resolve()
       .then(() => {
-        return callback(data);
+        return callback(data.data);
       })
-      .then((res) => ({
-        data: res,
-        success: true,
-      }))
-      .catch((e) => handleError(type, e))
-      .then((res) => postMessage({ result: res, webViewId, token }));
+      .then((res) => postMessage({ data: res, success: true, token, type }, webViewId))
+      .catch((e) => {
+        postMessage(
+          {
+            error: e ? e.message || e.toString() : `${type} 调用出错`,
+            success: false,
+            token,
+            type,
+          },
+          webViewId
+        );
+      });
   });
 };
 
@@ -70,14 +56,13 @@ const registry = (type: string, callback: Callback) => {
  * @param param 传给消息回调的数据
  * @param webViewId web-view的id
  */
-const trigger = (param: { type: string; data?: any; token: string }, webViewId: string) => {
+const trigger = (param: Message, webViewId: string) => {
   const { type, data, token } = param;
-  const value: Value = {
+  publish<Data>(type, {
     data,
     webViewId,
     token,
-  };
-  publish(type, value);
+  });
 };
 
 export { registry, trigger };
