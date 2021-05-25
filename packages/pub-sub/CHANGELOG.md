@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/noshower/tb-app/compare/@tb-app/pub-sub@0.3.0...@tb-app/pub-sub@0.4.0) (2021-05-25)
+
+### Features
+
+- **pub-sub:** 打包结果由 csj 改为 es ([531e368](https://github.com/noshower/tb-app/commit/531e3684119f75a5b7abdff4fefd05ee5b1099df))
+
+### BREAKING CHANGES
+
+- **pub-sub:** 打包结果由 csj 改为 es
+
 # [0.3.0](https://github.com/noshower/tb-app/compare/@tb-app/pub-sub@0.2.0...@tb-app/pub-sub@0.3.0) (2021-05-25)
 
 ### Features

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/noshower/tb-app/compare/@tb-app/pc-api@0.1.3...@tb-app/pc-api@0.2.0) (2021-05-25)
+
+### Features
+
+- 打包结果由 csj 改为 es ([768ccca](https://github.com/noshower/tb-app/commit/768cccac012e4e812edfde3ed72c83278884a4d1))
+
+### BREAKING CHANGES
+
+- 打包结果由 csj 改为 es
+
 ## [0.1.3](https://github.com/noshower/tb-app/compare/@tb-app/pc-api@0.1.2...@tb-app/pc-api@0.1.3) (2021-05-24)
 
 ### Bug Fixes
