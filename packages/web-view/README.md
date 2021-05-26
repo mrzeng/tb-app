@@ -12,6 +12,14 @@ yarn add @tb-app/web-view
 npm i @tb-app/web-view
 ```
 
+## 注意：
+
+web-view 端，html 中必须引入下面的 js
+
+```
+<script src="https://appx/web-view.min.js"></script>
+```
+
 ## 特点
 
 - 支持 TypeScript
