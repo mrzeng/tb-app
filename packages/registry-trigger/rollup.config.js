@@ -8,7 +8,7 @@ export default [
       file: 'lib/index.js',
       format: 'es',
     },
-    external: ['@tb-app/pub-sub', '@tb-app/pc-api'],
+    external: ['@tb-app/pub-sub', '@tbmp/mp-cloud-sdk'],
     plugins: [
       typescript({ useTsconfigDeclarationDir: true, tsconfig: './tsconfig.prod.json' }),
       cleaner({

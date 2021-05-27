@@ -1,6 +1,6 @@
 {
   "name": "@tb-app/web-view-api",
-  "version": "0.5.0",
+  "version": "0.0.1",
   "description": "实现webview与淘宝小程序之间的通信",
   "keywords": [
     "taobao",
