@@ -1,0 +1,64 @@
+{
+  "name": "@tb-app/registry-trigger",
+  "version": "0.5.0",
+  "description": "实现webview与淘宝小程序之间的通信",
+  "keywords": [
+    "taobao",
+    "tb",
+    "onMessage",
+    "postMessage",
+    "webview",
+    "app",
+    "mini",
+    "localwebview"
+  ],
+  "author": "noshower",
+  "homepage": "https://github.com/noshower/tb-app/tree/main/packages/registry-trigger",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib",
+    "types"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noshower/tb-app.git"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest --no-cache",
+    "test:watch": "jest --watch"
+  },
+  "bugs": {
+    "url": "https://github.com/noshower/tb-app/issues"
+  },
+  "dependencies": {
+    "@tb-app/pub-sub": "^0.4.0",
+    "@tbmp/mp-cloud-sdk": "^1.4.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-typescript": "^7.13.0",
+    "@tongtian/jest-config-preset": "^2.0.0",
+    "@types/jest": "^26.0.23",
+    "commitizen": "^4.2.4",
+    "core-js": "^3.12.1",
+    "jest": "^26.6.3",
+    "rollup": "^2.49.0",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4"
+  },
+  "volta": {
+    "node": "14.17.0",
+    "npm": "7.12.0"
+  }
+}
