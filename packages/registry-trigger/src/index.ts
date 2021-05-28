@@ -23,9 +23,20 @@ const registry = (type: string, callback: Callback) => {
       })
       .then((res) => postMessage({ data: res, success: true, token, type }, webViewContext))
       .catch((e) => {
+        let error = e;
+        if (typeof e !== 'object') {
+          error = {
+            message: e,
+          };
+        } else {
+          const keys = Object.getOwnPropertyNames(e || {});
+          error = keys.reduce((prev, key) => {
+            return { ...prev, [key]: e[key] };
+          }, {} as any);
+        }
         postMessage(
           {
-            error: e ? e.message || e.toString() : `${type} 调用出错`,
+            error,
             success: false,
             token,
             type,
@@ -39,7 +50,7 @@ const registry = (type: string, callback: Callback) => {
 /**
  * 注册 my
  */
-registry(`${prefix}my`, ({ api, style, options }: { api: string; style: 'async' | 'sync' | 'value'; options: any }) => {
+registry(`${prefix}my`, ({ api, options }: { api: string; options: any }) => {
   if (typeof api !== 'string') {
     throw new Error('api必须是字符串');
   }
@@ -48,10 +59,12 @@ registry(`${prefix}my`, ({ api, style, options }: { api: string; style: 'async' 
   }
   const [key1, key2] = api.split('.');
   const method = key2 ? my[key1][key2] : my[key1];
-  if (style === 'value') {
-    return method;
-  }
-  if (style === 'async') {
+
+  if (typeof method === 'function') {
+    const isSyncApi = api.indexOf('Sync') + 4 === api.length || api === 'canIUse';
+    if (isSyncApi) {
+      return method(options);
+    }
     return new Promise((resolve, reject) => {
       method({
         ...(options || {}),
@@ -60,10 +73,7 @@ registry(`${prefix}my`, ({ api, style, options }: { api: string; style: 'async' 
       });
     });
   }
-  if (style === 'sync') {
-    return method();
-  }
-  throw new Error('style 仅支持 async,sync,value');
+  return method;
 });
 /**
  * 注册 httpRequest
