@@ -8,5 +8,5 @@ export default function queryDBSize(): Promise<{
   warningLimit: number;
   deleteLimit: number;
 }> {
-  return wrapInvoke({ type: 'queryDBSize' });
+  return wrapInvoke({ type: 'qn.queryDBSize' });
 }

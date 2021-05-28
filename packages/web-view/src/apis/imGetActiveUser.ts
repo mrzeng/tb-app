@@ -6,5 +6,5 @@ import wrapInvoke from '../utils/invoke';
 export default function imGetActiveUser(): Promise<{
   user_nick: string;
 }> {
-  return wrapInvoke({ type: 'imGetActiveUser' });
+  return wrapInvoke({ type: 'qn.imGetActiveUser' });
 }

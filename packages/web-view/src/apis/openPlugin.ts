@@ -12,5 +12,5 @@ export default function openPlugin(options: {
   pageName?: string;
   directUrl: string;
 }): Promise<{ success: boolean }> {
-  return wrapInvoke({ type: 'openPlugin', data: options });
+  return wrapInvoke({ type: 'qn.openPlugin', data: options });
 }

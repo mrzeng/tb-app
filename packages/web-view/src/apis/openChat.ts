@@ -7,5 +7,5 @@ export default function openChat(options: { nick: string; text?: string }): Prom
   nickName: string;
   avatar: string;
 }> {
-  return wrapInvoke({ type: 'openChat', data: options });
+  return wrapInvoke({ type: 'qn.openChat', data: options });
 }

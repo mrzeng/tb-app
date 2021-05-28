@@ -5,7 +5,7 @@ import wrapInvoke from '../utils/invoke';
  */
 export default function changePrice(options: { tid: string }): Promise<{ success: boolean }> {
   return wrapInvoke({
-    type: 'changePrice',
+    type: 'qn.changePrice',
     data: options,
   });
 }

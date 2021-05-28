@@ -7,5 +7,5 @@ export default function database(options: { method: 'execSql' | 'batchSql'; sql:
   data: string;
   errorMessage: string;
 }> {
-  return wrapInvoke({ type: 'database', data: options });
+  return wrapInvoke({ type: 'qn.database', data: options });
 }

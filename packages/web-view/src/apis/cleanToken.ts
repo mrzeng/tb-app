@@ -5,6 +5,6 @@ import wrapInvoke from '../utils/invoke';
  */
 export default function cleanToken(): Promise<{ success: boolean }> {
   return wrapInvoke({
-    type: 'cleanToken',
+    type: 'qn.cleanToken',
   });
 }
