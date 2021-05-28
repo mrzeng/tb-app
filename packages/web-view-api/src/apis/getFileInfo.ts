@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 获取文件信息
@@ -7,5 +7,5 @@ export default function getFileInfo(options: { apFilePath: string; digestAlgorit
   size: number;
   createTime: number;
 }> {
-  return wrapInvoke({ type: 'getFileInfo', data: options });
+  return invokeMy({ type: 'getFileInfo', data: options });
 }

@@ -1,7 +1,7 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 /**
  * 关闭插件页面
  */
 export default function closeQAP(): Promise<{ success: boolean }> {
-  return wrapInvoke({ type: 'closeQAP' });
+  return invokeMy({ type: 'qn.closeQAP' });
 }

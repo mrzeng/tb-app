@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 type SizeType = 'original' | 'compressed';
 type SourceType = 'camera' | 'album';
@@ -11,5 +11,5 @@ export default function chooseImage(options?: {
   sizeType?: SizeType | SizeType[];
   sourceType?: SourceType | SourceType[];
 }): Promise<{ apFilePaths: string[]; compressLevel: number; tempFilePaths: string[] }> {
-  return wrapInvoke({ type: 'chooseImage', data: options });
+  return invokeMy({ type: 'chooseImage', data: options });
 }

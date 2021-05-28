@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 同步获取模板ext.json中的ext配置
@@ -6,5 +6,5 @@ import wrapInvoke from '../utils/invoke';
 export default function getExtConfigSync(): Promise<{
   data: unknown;
 }> {
-  return wrapInvoke({ type: 'getExtConfigSync' });
+  return invokeMy({ type: 'getExtConfigSync' });
 }

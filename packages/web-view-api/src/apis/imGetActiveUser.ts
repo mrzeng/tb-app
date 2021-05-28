@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 获取当前IM旺旺联系人
@@ -6,5 +6,5 @@ import wrapInvoke from '../utils/invoke';
 export default function imGetActiveUser(): Promise<{
   user_nick: string;
 }> {
-  return wrapInvoke({ type: 'imGetActiveUser' });
+  return invokeMy({ type: 'qn.imGetActiveUser' });
 }

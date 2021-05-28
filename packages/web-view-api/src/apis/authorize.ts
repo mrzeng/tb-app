@@ -1,4 +1,4 @@
-import invokeMy from './invokeMy';
+import { invokeMy } from '../invoke';
 
 /**
  * 发起用户授权
@@ -7,7 +7,7 @@ export default function authorize(options: { scopes: string }): Promise<{
   authSuccessScope: string;
 }> {
   return invokeMy({
-    api: 'authorize',
-    options,
+    type: 'authorize',
+    data: options,
   });
 }

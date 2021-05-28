@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 确认框:弹窗样式不支持定制
@@ -9,5 +9,5 @@ export default function confirm(options?: {
   confirmButtonText?: string;
   cancelButtonText?: string;
 }): Promise<{ confirm: boolean }> {
-  return wrapInvoke({ type: 'confirm', data: options });
+  return invokeMy({ type: 'confirm', data: options });
 }

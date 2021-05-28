@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 获取图片信息
@@ -10,5 +10,5 @@ export default function getImageInfo(options: { src: string }): Promise<{
   // orientation: 'up' | 'down' | 'left' | 'right' | 'up-mirrored' | 'down-mirrored' | 'left-mirrored' | 'right-mirrored';
   // type: string;
 }> {
-  return wrapInvoke({ type: 'getImageInfo', data: options });
+  return invokeMy({ type: 'getImageInfo', data: options });
 }

@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 获取保存的所有文件信息
@@ -6,5 +6,5 @@ import wrapInvoke from '../utils/invoke';
 export default function getSavedFileList(): Promise<{
   fileList: { size: number; createTime: number; apFilePath: string }[];
 }> {
-  return wrapInvoke({ type: 'getSavedFileList' });
+  return invokeMy({ type: 'getSavedFileList' });
 }

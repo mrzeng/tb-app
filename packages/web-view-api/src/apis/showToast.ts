@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 显示一个弱提示，可选择多少秒之后消失
@@ -8,5 +8,5 @@ export default function showToast(options?: {
   type?: 'success' | 'fail' | 'exception' | 'none';
   duration?: number;
 }): Promise<{ success: boolean }> {
-  return wrapInvoke({ type: 'showToast', data: options });
+  return invokeMy({ type: 'showToast', data: options });
 }

@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 用于获取当前小程序的运行版本
@@ -6,5 +6,5 @@ import wrapInvoke from '../utils/invoke';
 export default function getRunScene(): Promise<{
   envVersion: string;
 }> {
-  return wrapInvoke({ type: 'getRunScene' });
+  return invokeMy({ type: 'getRunScene' });
 }

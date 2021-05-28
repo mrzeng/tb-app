@@ -1,6 +1,8 @@
 import { subscribe, publish, unsubscribe, subscribeOnce } from '@tb-app/pub-sub';
 import { Message, Result, Data } from './type';
 
+const prefix = 'registry-trigger-';
+
 if (typeof my !== 'undefined') {
   my.onMessage = function onMessage(result: Result) {
     const { token, type, ...data } = result;
@@ -19,11 +21,7 @@ function invoke<T = any>(options: { type: string; data?: any }): Promise<T> {
       if (success) {
         resolve(data);
       } else {
-        try {
-          reject(JSON.parse(error!));
-        } catch (e) {
-          reject(new Error(error));
-        }
+        reject(error);
       }
     });
     const message: Message = {
@@ -32,6 +30,36 @@ function invoke<T = any>(options: { type: string; data?: any }): Promise<T> {
       token,
     };
     my.postMessage(message);
+  });
+}
+
+/**
+ * 调用小程序my上的api, 不支持监听和创建上下文之类的api
+ * @param data
+ * @returns
+ */
+function invokeMy({ type, data }: { type: string; data?: any }) {
+  return invoke({
+    type: `${prefix}my`,
+    data: {
+      api: type,
+      options: data,
+    },
+  });
+}
+
+/**
+ * 调用小程序cloud上的api
+ * @param data
+ * @returns
+ */
+function invokeCloud({ type, data }: { type: string; data?: any }) {
+  return invoke({
+    type: `${prefix}cloud`,
+    data: {
+      api: type,
+      options: data,
+    },
   });
 }
 
@@ -52,4 +80,4 @@ function removeListen(type: string) {
   unsubscribe(type);
 }
 
-export { invoke, listen, removeListen };
+export { invoke, listen, removeListen, invokeMy, invokeCloud };

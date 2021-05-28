@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 获取当前网络状态
@@ -8,5 +8,5 @@ export default function getNetworkType(): Promise<{
   isConnected: boolean;
   networkType: string;
 }> {
-  return wrapInvoke({ type: 'getNetworkType' });
+  return invokeMy({ type: 'getNetworkType' });
 }

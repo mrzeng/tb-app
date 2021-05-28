@@ -1,8 +1,8 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 选择文件
  */
 export default function chooseFile(options: { count?: number; type?: number }): Promise<{ apFilePaths: string[] }> {
-  return wrapInvoke({ type: 'chooseFile', data: options });
+  return invokeMy({ type: 'qn.chooseFile', data: options });
 }

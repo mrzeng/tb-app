@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 文件上传
@@ -11,5 +11,5 @@ export default function uploadFile<T = unknown>(options: {
   header: unknown;
   formData: unknown;
 }): Promise<T> {
-  return wrapInvoke({ type: 'uploadFile', data: options });
+  return invokeMy({ type: 'uploadFile', data: options });
 }

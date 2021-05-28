@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 非对称加密
@@ -6,5 +6,5 @@ import wrapInvoke from '../utils/invoke';
 export default function rsa(options: { action: string; text: string; key: string }): Promise<{
   text: string;
 }> {
-  return wrapInvoke({ type: 'rsa', data: options });
+  return invokeMy({ type: 'rsa', data: options });
 }

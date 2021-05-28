@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 打开聊天
@@ -7,5 +7,5 @@ export default function openChat(options: { nick: string; text?: string }): Prom
   nickName: string;
   avatar: string;
 }> {
-  return wrapInvoke({ type: 'openChat', data: options });
+  return invokeMy({ type: 'qn.openChat', data: options });
 }

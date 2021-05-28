@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 打开千牛插件接口
@@ -12,5 +12,5 @@ export default function openPlugin(options: {
   pageName?: string;
   directUrl: string;
 }): Promise<{ success: boolean }> {
-  return wrapInvoke({ type: 'openPlugin', data: options });
+  return invokeMy({ type: 'qn.openPlugin', data: options });
 }

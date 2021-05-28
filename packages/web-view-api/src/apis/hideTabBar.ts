@@ -1,8 +1,8 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 隐藏 tabBar
  */
 export default function hideTabBar(options?: { animation: boolean }): Promise<{ success: boolean }> {
-  return wrapInvoke({ type: 'hideTabBar', data: options });
+  return invokeMy({ type: 'hideTabBar', data: options });
 }

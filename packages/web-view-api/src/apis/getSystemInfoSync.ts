@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 获取手机系统信息的同步接口
@@ -22,5 +22,5 @@ export default function getSystemInfoSync(): Promise<{
   fontSizeSetting: number;
   app: string;
 }> {
-  return wrapInvoke({ type: 'getSystemInfoSync' });
+  return invokeMy({ type: 'getSystemInfoSync' });
 }

@@ -1,4 +1,4 @@
-import wrapInvoke from '../utils/invoke';
+import { invokeMy } from '../invoke';
 
 /**
  * 获取手机系统信息
@@ -22,5 +22,5 @@ export default function getSystemInfo(): Promise<{
   fontSizeSetting: number;
   app: string;
 }> {
-  return wrapInvoke({ type: 'getSystemInfo' });
+  return invokeMy({ type: 'getSystemInfo' });
 }
