@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/noshower/tb-app/compare/@tb-app/registry-trigger@0.2.0...@tb-app/registry-trigger@0.2.1) (2021-05-29)
+
+### Bug Fixes
+
+- **registry-trigger:** 修复 cloud.init 调用,报 api 不存在的问题. 完善文档 ([a1314e2](https://github.com/noshower/tb-app/commit/a1314e22a6d00ccaf114aff05c5d70b5861cb911))
+
 # [0.2.0](https://github.com/noshower/tb-app/compare/@tb-app/registry-trigger@0.1.0...@tb-app/registry-trigger@0.2.0) (2021-05-29)
 
 ### Features
