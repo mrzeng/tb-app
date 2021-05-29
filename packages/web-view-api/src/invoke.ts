@@ -15,6 +15,7 @@ if (typeof my !== 'undefined') {
  * @param options
  * @returns
  */
+
 function invoke(options: { type: string; data?: any }): Promise<any> {
   return new Promise((resolve, reject) => {
     const token = subscribeOnce(options.type, ({ success, data, error }: Data) => {
@@ -36,8 +37,8 @@ function invoke(options: { type: string; data?: any }): Promise<any> {
 /**
  * 调用小程序my上的api, 不支持监听和创建上下文之类的api
  * @param data
- * @returns
  */
+
 function invokeMy({ type, data }: { type: string; data?: any }): Promise<any> {
   return invoke({
     type: `${prefix}my`,
@@ -51,7 +52,6 @@ function invokeMy({ type, data }: { type: string; data?: any }): Promise<any> {
 /**
  * 调用小程序cloud上的api
  * @param data
- * @returns
  */
 function invokeCloud({ type, data }: { type: string; data?: any }): Promise<any> {
   return invoke({
@@ -66,7 +66,6 @@ function invokeCloud({ type, data }: { type: string; data?: any }): Promise<any>
 /**
  * 小程序的请求
  * @param options
- * @returns
  */
 function httpRequest<T = any>(options: { path: string; body?: any; headers?: any; method?: string; exts?: Record<string, any> }): Promise<T> {
   return invoke({
