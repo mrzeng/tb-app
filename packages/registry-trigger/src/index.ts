@@ -104,7 +104,7 @@ registry(`${prefix}cloud`, ({ api, options }) => {
   }
   const [key1, key2] = api.split('.');
   // @ts-ignore
-  if (typeof cloud[key1] === 'undefined' || typeof cloud[key1][key2] === 'undefined') {
+  if (typeof cloud[key1] === 'undefined' || (key2 && typeof cloud[key1][key2] === 'undefined')) {
     throw new Error(`api:'${api}'不存在`);
   }
   // @ts-ignore
