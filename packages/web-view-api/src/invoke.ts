@@ -15,7 +15,7 @@ if (typeof my !== 'undefined') {
  * @param options
  * @returns
  */
-function invoke<T = any>(options: { type: string; data?: any }): Promise<T> {
+function invoke(options: { type: string; data?: any }): Promise<any> {
   return new Promise((resolve, reject) => {
     const token = subscribeOnce(options.type, ({ success, data, error }: Data) => {
       if (success) {
@@ -38,7 +38,7 @@ function invoke<T = any>(options: { type: string; data?: any }): Promise<T> {
  * @param data
  * @returns
  */
-function invokeMy({ type, data }: { type: string; data?: any }) {
+function invokeMy({ type, data }: { type: string; data?: any }): Promise<any> {
   return invoke({
     type: `${prefix}my`,
     data: {
@@ -53,13 +53,25 @@ function invokeMy({ type, data }: { type: string; data?: any }) {
  * @param data
  * @returns
  */
-function invokeCloud({ type, data }: { type: string; data?: any }) {
+function invokeCloud({ type, data }: { type: string; data?: any }): Promise<any> {
   return invoke({
     type: `${prefix}cloud`,
     data: {
       api: type,
       options: data,
     },
+  });
+}
+
+/**
+ * 小程序的请求
+ * @param options
+ * @returns
+ */
+function httpRequest<T = any>(options: { path: string; body?: any; headers?: any; method?: string; exts?: Record<string, any> }): Promise<T> {
+  return invoke({
+    type: `${prefix}httpRequest`,
+    data: options,
   });
 }
 
@@ -80,4 +92,4 @@ function removeListen(type: string) {
   unsubscribe(type);
 }
 
-export { invoke, listen, removeListen, invokeMy, invokeCloud };
+export { invoke, listen, removeListen, invokeMy, invokeCloud, httpRequest };

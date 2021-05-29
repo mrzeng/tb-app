@@ -1,4 +1,4 @@
-export { invoke, listen, removeListen, invokeMy, invokeCloud } from './invoke';
+export * from './invoke';
 
 // 路由
 export { default as switchTab } from './apis/switchTab';
@@ -124,3 +124,6 @@ export { default as getRunScene } from './apis/getRunScene';
 // 模板实例化
 export { default as getExtConfig } from './apis/getExtConfig';
 export { default as getExtConfigSync } from './apis/getExtConfigSync';
+
+// cloud
+export { default as cloud } from './apis/cloud';
