@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/noshower/tb-app/compare/@tb-app/pc-api@0.2.0...@tb-app/pc-api@0.2.1) (2021-05-29)
+
+### Bug Fixes
+
+- **pc-api:** 修复 getServerTime, hideLoading 调用的 bug ([8f43c5e](https://github.com/noshower/tb-app/commit/8f43c5ee8fb7a86fd235ac3a1fb2bb97c080fa80))
+
 # [0.2.0](https://github.com/noshower/tb-app/compare/@tb-app/pc-api@0.1.3...@tb-app/pc-api@0.2.0) (2021-05-25)
 
 ### Features

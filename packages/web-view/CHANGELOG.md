@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/noshower/tb-app/compare/@tb-app/web-view@0.5.0...@tb-app/web-view@0.6.0) (2021-05-29)
+
+### Features
+
+- **web-view:** 修改 my.qn.xx 形式的 api 调用报错 ([1727295](https://github.com/noshower/tb-app/commit/1727295b1041353832273846044579782d189be6))
+
 # [0.5.0](https://github.com/noshower/tb-app/compare/@tb-app/web-view@0.4.0...@tb-app/web-view@0.5.0) (2021-05-25)
 
 ### Features
