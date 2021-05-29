@@ -28,9 +28,11 @@
 - 支持 TypeScript
 - ES 模块
 
-### [@tb-app/web-view](https://github.com/noshower/tb-app/tree/main/packages/web-view)
+### [@tb-app/web-view](https://github.com/noshower/tb-app/tree/main/packages/web-view) 已废弃
 
 这是一个用于淘宝小程序与 web-view 通信的库, 同时还提供了 web-view 调用小程序 api 的简易方式。
+
+该包**已废弃**，推荐使用 @tb-app/registry-trigger 和 @tb-app/web-view-api
 
 #### 特点
 
@@ -39,3 +41,25 @@
 - 支持 小程序与 web-view 之间的并发通信
 - 支持一次注册所有小程序 API
 - 依赖 @tb-app/pc-api 和 @tb-app/pub-sub
+
+### [@tb-app/registry-trigger](https://github.com/noshower/tb-app/tree/main/packages/registry-trigger)
+
+这是一个专门用于小程序端的库，需要与 @tb-app/web-view-api 配合使用。
+
+#### 特点
+
+- 支持 TypeScript
+- ES 模块
+- 支持 小程序与 web-view 之间的并发通信
+- 支持一次注册所有小程序 API
+
+### [@tb-app/web-view-api](https://github.com/noshower/tb-app/tree/main/packages/web-view-api)
+
+这是一个专门用于 web-view 端的库，需要与 @tb-app/registry-trigger 配合使用。
+
+#### 特点
+
+- 支持 TypeScript
+- ES 模块
+- 支持 小程序与 web-view 之间的并发通信
+- 支持直接使用小程序 API
