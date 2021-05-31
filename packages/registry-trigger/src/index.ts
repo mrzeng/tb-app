@@ -83,13 +83,15 @@ registry(
   function httpRequest(options: { path: string; body?: any; headers?: any; method?: string; exts?: Record<string, any> }) {
     if (my.isIDE) {
       const { path, headers, method, body, exts } = options;
-      return my.httpRequest({
-        url: path,
-        headers,
-        method,
-        data: body,
-        timeout: exts ? exts.timeout : undefined,
-      });
+      return my
+        .httpRequest({
+          url: path,
+          headers,
+          method,
+          data: body,
+          timeout: exts ? exts.timeout : undefined,
+        })
+        .then(({ data: { data } }: any) => data);
     }
     return cloud.application.httpRequest(options);
   }
