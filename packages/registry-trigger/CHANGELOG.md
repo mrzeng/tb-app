@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/noshower/tb-app/compare/@tb-app/registry-trigger@0.2.1...@tb-app/registry-trigger@0.2.2) (2021-05-31)
+
+### Bug Fixes
+
+- **registry-trigger:** 修复 httpRequest 在模拟器和真机上返回格式不一样的问题 ([d65bf9d](https://github.com/noshower/tb-app/commit/d65bf9dd0599b8f1265713a33e9f73c7a93b0d5b))
+
 ## [0.2.1](https://github.com/noshower/tb-app/compare/@tb-app/registry-trigger@0.2.0...@tb-app/registry-trigger@0.2.1) (2021-05-29)
 
 ### Bug Fixes
