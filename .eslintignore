@@ -1,6 +1,4 @@
-/node_modules/
-.eslintrc.js
-jest.config.js
-rollup.config.js
+/**/node_modules/
 /**/lib/*
-.babelrc.js
+/**/types/
+/**/*.js

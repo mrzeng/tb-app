@@ -1,19 +1,3 @@
-import typescript from 'rollup-plugin-typescript2';
-import cleaner from 'rollup-plugin-cleaner';
+import config from '../rollup.base';
 
-export default [
-  {
-    input: 'src/index.ts',
-    output: {
-      file: 'lib/index.js',
-      format: 'es',
-    },
-    external: ['@tb-app/pub-sub'],
-    plugins: [
-      typescript({ useTsconfigDeclarationDir: true, tsconfig: './tsconfig.prod.json' }),
-      cleaner({
-        targets: ['lib/', 'types/'],
-      }),
-    ],
-  },
-];
+export default { ...config, external: ['@tb-app/pub-sub'] };
